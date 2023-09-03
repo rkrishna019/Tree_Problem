@@ -1,0 +1,42 @@
+class Solution
+{
+    boolean check(Node root)
+    {
+        int max_dist = maxDist(root);
+        int min_dist = minDist(root);
+        
+        if(max_dist == min_dist){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    int maxDist(Node root){
+        
+        if(root == null){
+            return 0;
+        }
+        
+        int left_dist = maxDist(root.left);
+        int right_dist = maxDist(root.right);
+        
+        return 1 + Math.max(left_dist,right_dist);
+    }
+    
+    int minDist(Node root){
+        
+        if(root == null){
+            return Integer.MAX_VALUE;
+        }
+      if(root.left == null && root.right == null){
+            return 1;
+      }
+        
+        int left_dist = minDist(root.left);
+        int right_dist = minDist(root.right);
+        
+        return 1 + Math.min(left_dist,right_dist);
+    }
+}
