@@ -1,0 +1,29 @@
+class Solution
+{
+    boolean isLeaf(Node root){
+        
+        if(root == null) return false;
+        
+        if(root.left == null && root.right == null){
+            return true;
+        }
+        return false;
+        
+    }
+    int rightLeafSum(Node root)
+    {
+        int sum= 0;
+        
+        if(root != null){
+            
+            if(isLeaf(root.right)){
+                sum += root.right.data;
+            }
+            else{
+                sum += rightLeafSum(root.right);
+            }
+            sum += rightLeafSum(root.left);
+        }
+        return sum;
+    }
+}
