@@ -1,0 +1,26 @@
+{
+    //Function to return the level order traversal of a tree.
+    static ArrayList <Integer> levelOrder(Node node) 
+    {
+        ArrayList<Integer> al = new ArrayList<>();
+        Queue<Node> q = new LinkedList<>();
+        q.offer(node);
+        
+        while(!q.isEmpty())
+        {
+            Node curr = q.peek();
+            al.add(curr.data);
+            q.poll();
+
+                if(curr.left != null){
+                    
+                    q.offer(curr.left);
+                }
+                if(curr.right != null){
+                    q.offer(curr.right);
+                }
+                
+        }
+        return al;
+    }
+}
