@@ -1,0 +1,26 @@
+class Tree
+{
+    // Return a list containing the Preorder traversal of the given tree
+    ArrayList<Integer> preOrder(Node root)
+    {
+         ArrayList<Integer> al = new ArrayList<>();
+         Stack<Node> st = new Stack<>();
+         st.add(root);
+         while(!st.isEmpty()){
+             
+             Node curr = st.pop();
+             al.add(curr.data);
+             
+             if(curr.right != null){
+                 st.push(curr.right);
+             }
+             if(curr.left != null){
+                 st.push(curr.left);
+             }
+         }
+         return al;
+        
+    }
+    
+    
+}
