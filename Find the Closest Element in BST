@@ -1,0 +1,55 @@
+int ans = 0;
+        int res = 0;
+        int res_floor = floor(root,K);
+        int res_ceil = ceil(root,K);
+        
+        if(K == res_floor || K == res_ceil){
+            return 0;
+        }
+        else{
+            res = Math.abs(K - res_floor);
+            ans = Math.abs(K - res_ceil);
+        }
+        
+        return Math.min(res,ans);
+    } 
+    
+    static int floor(Node root, int k){
+        
+        int res = 0;
+        
+        while(root != null){
+            
+            if(root.data == k){
+            res = root.data;
+        }
+            if(root.data > k){
+                root = root.left;
+            }
+            else
+            {
+                res = root.data;
+                root = root.right;
+            }
+        }
+        return res;
+    }
+    
+    static int ceil(Node root, int k){
+        
+        int res = 0;
+        while(root != null){
+            if(root.data == k){
+                res = root.data;
+            }
+            if(root.data < k){
+                root = root.right;
+            }
+            else{
+                res = root.data;
+                root = root.left;
+            }
+        }
+        return res;
+    }
+}
